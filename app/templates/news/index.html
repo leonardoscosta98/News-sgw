@@ -205,7 +205,7 @@
 </head>
 
 <body id="body">
-
+    {% if aviso.imagem_fundo.url %}
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="image-content">
@@ -214,6 +214,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     <div class="buttons-sup">
         <img onclick="openSuport()" src="http://softguild.com.br/assets/sgwnews/btn_chat.png" alt="">
     </div>
