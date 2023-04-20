@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>News</title>
+    <style>
+        .container {
+            padding: 1rem 5rem;
+        }
+
+        body {
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            background-image: url({{imgfundounsplash}});
+            overflow-x: hidden;
+            overflow-y: hidden;
+            min-width: 1256px;
+            min-height: 630px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .container {
+            margin: 1rem 2rem;
+            position: relative;
+        }
+
+        .carousel {
+            position: relative;
+            width: auto;
+            height: 30rem;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .buttons {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .prev,
+        .next {
+            display: inline-block;
+            border: none;
+            background-color: #aaa;
+            color: #555;
+            padding: 0.1rem 1rem;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 30%;
+            opacity: 0.5;
+
+            transition: 0.1s;
+        }
+
+        .prev:hover,
+        .next:hover {
+            opacity: 1;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            border: none;
+            background-color: #bbb;
+            padding: 0.5rem 0.9rem;
+            cursor: pointer;
+            margin-right: 1rem;
+            border-radius: 05rem;
+        }
+
+        .btn.active {
+            background-color: #555;
+            color: #fff;
+        }
+
+        .buttons-sup {
+            position: absolute;
+            cursor: pointer;
+            top: 2rem;
+            /* bottom: 1rem; */
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .buttons-supNews {
+            position: absolute;
+            cursor: pointer;
+            /* bottom: 1rem; */
+            right: 2rem;
+            top: 8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+/* 
+        .buttons-sup img {
+            width: calc(3.5rem + 12px);
+            height: calc(3.5rem + 12px);
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+            z-index: 1;
+            overflow: hidden;
+            object-fit: cover;
+        } */
+
+        img {
+            width: auto;
+            height: auto;
+            overflow: hidden;
+            object-fit: cover;
+        }
+
+        .modal {
+            display: block;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            margin-top: 3%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .image-content{
+            position: relative;
+            text-align: center;   
+        }
+  
+
+        .close {
+            position: absolute;
+            z-index: 1;
+            top: 2%;
+            right: 2%;
+            width: 3rem;
+            border-radius: 8px;
+            font-size: 2rem;
+            border: none;
+            background: none;
+            color: red;
+            
+        }
+
+        .close:hover,
+        .close:focus {
+            text-decoration: none;
+            cursor: pointer;
+            border: red 2px solid;
+        }
+
+        .button-next {
+            position: absolute;
+            top: 50%;
+            right: 1%;
+        }
+
+        .button-prev {
+            position: absolute;
+            top: 50%;
+            left: 1%;
+        }
+    </style>
+</head>
+
+<body id="body">
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="image-content">
+                <button class="close" onclick="document.getElementById('modal').style.display = 'none'">&times;</button>
+                <img src="{{aviso.imagem_fundo.url}}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="buttons-sup">
+        <img onclick="openSuport()" src="http://softguild.com.br/assets/sgwnews/btn_chat.png" alt="">
+    </div>
+    <div class="buttons-supNews">
+        <img onclick="document.getElementById('modal').style.display = 'block'"src="http://softguild.com.br/assets/sgwnews/btn_snews.png" alt="">
+    </div>
+</body>
+<script>
+    var modal = document.getElementById("modal");
+
+    if ('{{aviso}}' == 'null') {
+        modal.style.display = "none";
+    }
+
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function openAviso() {
+        if (event.target == modal) {
+            modal.style.display = "block";
+        }
+    }
+
+    function openSuport() {
+        var url = "https://softguild.movidesk.com/Account/Authenticate?token=8b65bf7e-8c73-4702-a3fc-84d2e9112fd4&userName=&password=123";
+        var win = window.open(url, '_blank');
+        win.focus();
+    }
+
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        slideIndex += n;
+        showSlides(slideIndex);
+    }
+
+    function currentSlide(n) {
+        slideIndex = n;
+        showSlides(slideIndex);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        let dots = document.getElementsByClassName("btn");
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("active");
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].classList.remove("active");
+        }
+        slides[slideIndex - 1].classList.add("active");
+        dots[slideIndex - 1].classList.add("active");
+
+    }
+    setTimeout(function () {
+        plusSlides(1);
+    }, 10000);
+</script>
+
+</html>

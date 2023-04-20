@@ -1,0 +1,177 @@
+.container {
+    margin: 0 auto;
+    width: 50%;
+    /* position: relative; */
+}
+
+.bxMenu {
+    right: 25px;
+    left: auto;
+    background: none;
+    overflow: hidden;
+    padding: 0 4px 4px 0;
+    z-index: 1;
+    width: 78px;
+    height: 78px;
+    text-align: center;
+}
+
+.bxMenu a {
+    overflow: hidden;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 78px;
+    border-radius: 100%;
+    height: 78px;
+    display: inline-block;
+    padding-top: 2px;
+    padding-right: 1px;
+}
+
+.bxMenu img {
+    outline: none;
+    border: none;
+}
+
+.mnSNews {
+    top: 25px;
+}
+/* .bxInfo {
+  position: absolute;
+  min-width: 14px;
+  min-height: 14px;
+  padding: 7px;
+  border-radius: 100%;
+  font-size: 12px;
+  left: 10px;
+  background: rgba(0,0,0,0.43);
+} */
+
+.bxInfo {
+    position: absolute;
+    min-width: 14px;
+    min-height: 14px;
+    padding: 7px;
+    border-radius: 100%;
+    font-size: 12px;
+    /* left:10px; */
+    background: rgba(0, 0, 0, 0.43);
+}
+
+.bxInfo:hover {
+    color: #ddd;
+}
+
+.bxContent {
+    position: absolute;
+    overflow-x: hidden;
+    width: 1024px;
+
+    right: 50%;
+    margin-right: -512px;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 0;
+    max-width: 1026px;
+    z-index: 0;
+    box-shadow: 0 0 50px 0 rgb(0 0 0 / 30%);
+}
+
+/* .modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(240, 240, 240, 0.473);
+  display: flex;
+  opacity: 0.9;
+  transition: opacity 250ms ease;
+  color: white;
+} */
+
+.modal {
+    margin: auto;
+    margin-top: 10rem;
+    /* height: 260px; */
+    width: 90%;
+    max-width: 40rem;
+    background-color: rgb(126, 55, 55);
+    border-radius: 1.5rem;
+}
+
+.modal-header,
+.modal-content {
+    padding: 0.2rem;
+}
+
+.modal-header {
+    /* display: flex;
+  justify-content: space-between; */
+    background-color: hsla(0, 87%, 49%, 0.2);
+    border-radius: 1.5rem 1.5rem 0 0;
+    border: 4px solid #f7baf72f;
+    border-bottom: none;
+}
+
+.modal-content {
+    color: white;
+    border-radius: 0 0 1.5rem 1.5rem;
+    border: 4px solid #fd420944;
+    height: 100%;
+}
+
+.mensagem-personalizada {
+    border-radius: 21px;
+    padding: 1rem;
+    border: 2px solid white;
+    /* background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 0;
+    padding-top: 66.64%; */
+}
+
+.msg-p-imagem-sem-texto {
+    border-radius: 21px;
+    padding: 1rem;
+    border: 2px solid white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 0;
+    padding-top: 66.64%;
+}
+
+.msg-p-descricao {
+    white-space: pre-wrap;
+}
+
+.msg-p-descricao-perigo {
+    background-color: #9f5555;
+}
+
+.msg-p-descricao-aviso {
+    background-color: #ffeb3b;
+}
+
+.msg-p-descricao-info {
+    background-color: #2196f3;
+}
+
+.button-fechar-mensagem-personalizada {
+    border: none;
+    background: #0129;
+    color: white;
+    padding: rem;
+    position: absolute;
+    right: 20px;
+    width: 1.5rem;
+    border-radius: 6px;
+    top: 25px;
+}
+
+.button-fechar-mensagem-personalizada:hover {
+    background: #56575899;
+    color: white;
+}
